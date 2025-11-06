@@ -98,6 +98,7 @@ const UserForm: FunctionComponent<UserFormProps> = ({
       password: (values.password ?? "").trim(),
       userEmail: values.userEmail.trim(),
       role: values.role,
+      lastLoginAt: values.lastLoginAt,
     });
   };
 

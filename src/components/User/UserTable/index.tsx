@@ -1,5 +1,6 @@
 import { useCallback, useState, type FunctionComponent } from "react";
 import { Box, Tooltip } from "@mui/material";
+import dayjs from "dayjs";
 
 import PaginatedTable from "../../Table/PaginatedTable";
 import type { UserFrontendEntry, UserFormState } from "../../../types/user";
@@ -21,6 +22,7 @@ const BLANK_USER: UserFrontendEntry = {
   userEmail: "",
   password: "",
   role: "ROLE_USER",
+  lastLoginAt: null,
 };
 
 const UserTable: FunctionComponent<UserTableProps> = ({ users, onCreate, onEdit, onDelete }) => {
@@ -42,6 +44,8 @@ const UserTable: FunctionComponent<UserTableProps> = ({ users, onCreate, onEdit,
     type: null,
     user: null,
   });
+
+  const convertTimestamp = (timestamp: string | null): string => timestamp ? dayjs(timestamp).format("YYYY-MM-DD HH:mm:ss") : "Never";
 
   const columns: Column<UserFrontendEntry>[] = [
     {
@@ -70,6 +74,16 @@ const UserTable: FunctionComponent<UserTableProps> = ({ users, onCreate, onEdit,
       cell: (row) => (
         <Tooltip title={row.role}>
           <Box>{row.role.replace("ROLE_", "")}</Box>
+        </Tooltip>
+      ),
+      sx: { width: "150px", textAlign: "center" },
+    },
+    {
+      id: "lastLoginAt",
+      header: "Last Login",
+      cell: (row) => (
+        <Tooltip title={convertTimestamp(row.lastLoginAt)}>
+          <Box>{convertTimestamp(row.lastLoginAt)}</Box>
         </Tooltip>
       ),
       sx: { width: "150px", textAlign: "center" },

@@ -14,6 +14,7 @@ export type UserResponse = {
   role: Role;
   createdAt: string;
   updatedAt: string;
+  lastLoginAt: string | null;
 }
 
 export type UserFrontendEntry = {
@@ -22,6 +23,7 @@ export type UserFrontendEntry = {
   userEmail: string;
   password: string;
   role: Role;
+  lastLoginAt: string | null;
 }
 
 export type UserFormState = {
