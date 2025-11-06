@@ -19,6 +19,7 @@
     "axios": "^1.11.0",
     "bootstrap": "^5.3.7",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.19",
     "mui-color-input": "^7.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
